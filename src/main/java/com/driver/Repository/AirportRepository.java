@@ -53,8 +53,8 @@ public class AirportRepository {
             if(ticketHashMap.get(pid).contains(flightId))
                 cnt++;
 
-        if((!ticketHashMap.containsKey(passengerId) || ticketHashMap.get(passengerId).contains(flightId))
-                && cnt==flightHashMap.get(flightId).getMaxCapacity())
+        if((ticketHashMap.containsKey(passengerId) && ticketHashMap.get(passengerId).contains(flightId))
+                || cnt==flightHashMap.get(flightId).getMaxCapacity())
             return "FAILURE";
 
         HashSet<Integer> set=new HashSet<>();
