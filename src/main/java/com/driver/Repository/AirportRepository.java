@@ -128,7 +128,7 @@ public class AirportRepository {
             for(Map.Entry<String,Airport> mp: airportHashMap.entrySet()){
                 if(mp.getValue().getCity().equals(flightHashMap.get(count.getKey()).getFromCity()) ||
                         mp.getValue().getCity().equals(flightHashMap.get(count.getKey()).getToCity()))
-                    cnt+=count.getValue();
+                    cnt+=1;//count.getValue();
             }
         }
         return cnt;
