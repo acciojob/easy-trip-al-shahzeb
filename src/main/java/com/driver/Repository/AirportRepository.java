@@ -155,7 +155,7 @@ public class AirportRepository {
                     cnt+=1;//count.getValue();
             }
         }
-        return cnt+2;
+        return cnt;
 
     }
 
