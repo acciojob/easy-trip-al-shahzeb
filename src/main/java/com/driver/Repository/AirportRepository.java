@@ -115,11 +115,11 @@ public class AirportRepository {
 
     public int getNumberOfPeopleOn(Date date, String airportName){
 
+        /*
         City city = airportHashMap.get(airportName).getCity();
         if(city==null)
             return 0;
         List<Integer> flightId=new ArrayList<>();
-        HashMap<Integer, Integer> passengerCount=new HashMap<>();
         List<Flight> flights=new ArrayList<>();
         int cnt=0;
         for(Flight flight: flightHashMap.values())
@@ -137,22 +137,24 @@ public class AirportRepository {
                 if(ticketHashMap.get(pid).contains(flightId))
                     cnt++;
         }
+        */
 
-//        for(int pid: ticketHashMap.keySet()){
-//            for(int flightId: ticketHashMap.get(pid))
-//                if(flightHashMap.get(flightId).getFlightDate().compareTo(date)==0) {
-//                    passengerCount.put(flightId,passengerCount.getOrDefault(flightId,0)+1);
-//                }
-//        }
-        //to be done
+        HashMap<Integer, Integer> passengerCount=new HashMap<>();
+        int cnt=0;
+        for(int pid: ticketHashMap.keySet()){
+            for(int flightId: ticketHashMap.get(pid))
+                if(flightHashMap.get(flightId).getFlightDate().compareTo(date)==0) {
+                    passengerCount.put(flightId,passengerCount.getOrDefault(flightId,0)+1);
+                }
+        }
 
-//        for(Map.Entry<Integer,Integer> count: passengerCount.entrySet()){
-//            for(Map.Entry<String,Airport> mp: airportHashMap.entrySet()){
-//                if(mp.getValue().getCity().equals(flightHashMap.get(count.getKey()).getFromCity()) ||
-//                        mp.getValue().getCity().equals(flightHashMap.get(count.getKey()).getToCity()))
-//                    cnt+=1;//count.getValue();
-//            }
-//        }
+        for(Map.Entry<Integer,Integer> count: passengerCount.entrySet()){
+            for(Map.Entry<String,Airport> mp: airportHashMap.entrySet()){
+                if(mp.getValue().getCity().equals(flightHashMap.get(count.getKey()).getFromCity()) ||
+                        mp.getValue().getCity().equals(flightHashMap.get(count.getKey()).getToCity()))
+                    cnt+=1;//count.getValue();
+            }
+        }
         return cnt;
 
     }
