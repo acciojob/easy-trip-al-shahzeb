@@ -114,6 +114,7 @@ public class AirportRepository {
     }
 
     public int getNumberOfPeopleOn(Date date, String airportName){
+
         HashMap<Integer, Integer> passengerCount=new HashMap<>();
         List<Flight> flights=new ArrayList<>();
         for(int pid: ticketHashMap.keySet()){
@@ -131,7 +132,7 @@ public class AirportRepository {
                     cnt+=1;//count.getValue();
             }
         }
-        return 0;
+        return cnt;
 
     }
 
@@ -143,7 +144,8 @@ public class AirportRepository {
         int fare=0;
         for(int i=1; i<=cnt; i++)
             fare+=(3000 + (i*50));
-        return fare+100;
+        //return fare+100;
+        return cnt*cnt*25+(2975*cnt);
     }
     public String getAirportNameFromFlightId(int flightId){
         if(!flightHashMap.containsKey(flightId))
