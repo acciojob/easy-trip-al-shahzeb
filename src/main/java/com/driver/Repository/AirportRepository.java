@@ -53,7 +53,8 @@ public class AirportRepository {
             if(ticketHashMap.get(pid).contains(flightId))
                 cnt++;
 
-        if(cnt==flightHashMap.get(flightId).getMaxCapacity())
+        if((!ticketHashMap.containsKey(passengerId) || ticketHashMap.get(passengerId).contains(flightId))
+                && cnt==flightHashMap.get(flightId).getMaxCapacity())
             return "FAILURE";
 
         HashSet<Integer> set=new HashSet<>();
@@ -88,7 +89,7 @@ public class AirportRepository {
 
         if(flights.size()==0) return -1;
 
-        double minDuration=0.0;
+        double minDuration=Double.MAX_VALUE;
 
         for(Flight flight: flights)
             minDuration=Math.min(minDuration, flight.getDuration());
