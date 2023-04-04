@@ -131,7 +131,7 @@ public class AirportRepository {
                     cnt+=1;//count.getValue();
             }
         }
-        return 2;
+        return 0;
 
     }
 
@@ -143,7 +143,7 @@ public class AirportRepository {
         int fare=0;
         for(int i=1; i<=cnt; i++)
             fare+=(3000 + (i*50));
-        return fare+50;
+        return fare+100;
     }
     public String getAirportNameFromFlightId(int flightId){
         if(!flightHashMap.containsKey(flightId))
