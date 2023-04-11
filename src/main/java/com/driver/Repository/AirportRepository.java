@@ -213,11 +213,11 @@ public class AirportRepository {
     public int calculateRevenueOfAFlight(Integer flightId){
 
         int noOfPeopleBooked = flightTopassengerHashMap.get(flightId).size();
-        int variableFare = (noOfPeopleBooked*(noOfPeopleBooked+1))*25;
-        int fixedFare = 3000*noOfPeopleBooked;
-        int totalFare = variableFare + fixedFare;
+//        int variableFare = (noOfPeopleBooked*(noOfPeopleBooked+1))*25;
+//        int fixedFare = 3000*noOfPeopleBooked;
+//        //int totalFare = variableFare + fixedFare;
 
-        return totalFare;
+        return noOfPeopleBooked*noOfPeopleBooked*25+(2975*noOfPeopleBooked);
     }
 
     public String addPassenger(Passenger passenger){
